@@ -20,7 +20,7 @@ export async function sendEmail(formData) {
         service: "gmail",
         auth: {
             // Données issues de process.env
-            // 💡 process.env = objet interne de Node
+            // 💡 process.env = objet interne de Node en lien avec .env.local
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
         },
@@ -30,7 +30,7 @@ export async function sendEmail(formData) {
         // Envoi du mail
         await transporter.sendMail({
             from: email,
-            to: "TON_EMAIL@gmail.com", // todo : Completer
+            to: "lmoraldy.dev@gmail.com", 
             subject: `Nouveau message de ${forname} ${lastname}`,
             text: message,
             html: `<p><strong>Nom:</strong> ${lastname} ${forname}</p>
