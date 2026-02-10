@@ -5,17 +5,13 @@ import nodemailer from "nodemailer";
 
 
 export async function sendEmail(formData) {
-    // TEST 
-    console.log("Mon email est :", process.env.EMAIL_USER);
-
     // Récupération des données du formulaire
     const lastname = formData.get("lastname");
     const forname = formData.get("forname");
     const email = formData.get("from");
     const message = formData.get("message");
 
-    // 2. Configuration 
-    //  Gmail=  "Mot de passe d'application"
+    // Configuration 
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
