@@ -26,6 +26,7 @@ function Page() {
 
 
             <div className='flex flex-col gap-3 w-md'>
+                <p> test </p>
                 <form action={handleAction} className='flex flex-col'>
                     <label>Votre nom : </label>
                     <input className='p-2 mb-4 border border-gray-600'
