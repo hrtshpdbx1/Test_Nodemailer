@@ -12,11 +12,13 @@ import {
 
 
 
-function Sidebar() {
+function Sidebar(props) {
 
     /* --- 1. LES ÉTATS (STATES) --- */
     const [isOpen, setIsOpen] = useState(false); // State visibilité sidebar, fermé par défaut
-    const [fontSize, setFontSize] = useState(12); // State fontsize (test)
+
+    //todo : Récupérer dans les props les réglages actuels et la fonction pour les modifier
+    // todo : map des onClick, le bouton + ne fera plus un setFontSize local. Il appellera la fonction reçue du Layout 
 
     /* --- 2. LES FONCTIONS --- */
     function changeSize(delta) {
@@ -62,7 +64,7 @@ function Sidebar() {
                             <Image
                                 src={fontSizeIcon}
                                 alt="Icône taille de police"
-                                width={20} 
+                                width={20}
                                 height={20}
                             />
                             <button className="pill-btn" onClick={() => changeSize(1)}>+</button>

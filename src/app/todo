@@ -1,11 +1,15 @@
 Ta TODO Liste de codeur (Ordre de priorité)
+
 Phase A : La Structure (layout.js)
 
-    [ ] Déplacer le useState de la Sidebar vers le layout.js.
+    [x ] Déplacer le useState de la Sidebar vers le layout.js.
 
-    [ ] Créer l'objet DEFAULTS avec fontSize, lineHeight, bgColor, textColor.
+    [ x] Créer l'objet DEFAULTS avec fontSize, lineHeight, bgColor, textColor.
 
     [ ] Passer l'objet et la fonction de mise à jour à <Sidebar /> via les props.
+
+    Indice : Dans la démo, Aude fait : child.adopted = true. Dans mon cas, comme tu as un objet avec plusieurs propriétés (fontSize, lineHeight, etc.), quand tu modifies la taille, il ne faut pas "écraser" le reste (comme la couleur).
+    todo  : Révise l'utilisation du Spread Operator (...). Pour modifier juste la taille dans un objet, on fait souvent quelque chose comme : setCustom({ ...custom, fontSize: nouvelleValeur }).
 
 Phase B : La Sidebar (Sidebar.jsx)
 
