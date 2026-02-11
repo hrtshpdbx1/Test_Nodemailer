@@ -21,49 +21,6 @@ body.opendyslexic {
     font-family: var(--font-open-dyslexic), sans-serif;
 }
 
-   /* Fontface : plus d'actualité avec Next.js */
-/* @font-face {
-    font-family: 'Eido';
-    src: url('../font/eido.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal
-}
-
-@font-face {
-    font-family: 'Accessible DFA';
-    src: url('../font/AccessibleDfA-VF.woff') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Accessible DFA 2';
-    src: url('../font/AccessibleDfA-VF.woff2') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'BBB ReadMe';
-    src: url('../font/BBBReadMe-Regular.woff') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'BBB ReadMe 2';
-    src: url('../font/BBBReadMe-Regular.woff2') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'OpenDyslexic';
-    src: url('../font/OpenDyslexic-Regular.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-} */
-
 a {
     text-decoration: none;
 }
@@ -1015,14 +972,15 @@ em {
         margin-right: 18px;
             margin-top: 4px;
             min-width: 20px;
+
         transition: all 0.3s ease;
-        /* Transition douce pour la couleur et la taille */
         color: var(--main-text);
-        /* Couleur par défaut (ton gris/bleu) */
+
     }
 
-    .skills-list.mastery li:hover i {
-        transform: scale(1.2) rotate(5deg);
+    .skills-list.mastery li svg:hover  {
+            transition: all 0.3s ease;
+        transform: scale(1.2) 
     }
 
     /* Couleurs spécifiques par icône au survol */

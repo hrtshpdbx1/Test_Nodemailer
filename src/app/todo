@@ -1,0 +1,20 @@
+Ta TODO Liste de codeur (Ordre de priorité)
+Phase A : La Structure (layout.js)
+
+    [ ] Déplacer le useState de la Sidebar vers le layout.js.
+
+    [ ] Créer l'objet DEFAULTS avec fontSize, lineHeight, bgColor, textColor.
+
+    [ ] Passer l'objet et la fonction de mise à jour à <Sidebar /> via les props.
+
+Phase B : La Sidebar (Sidebar.jsx)
+
+    [ ] Remplacer les appels locaux à setFontSize par la fonction reçue du parent (updateSettings).
+
+    [ ] Recréer tes boutons de thèmes (cercles de couleurs) en utilisant un .map() sur un tableau d'objets thèmes (comme te l'a suggéré Caroline !).
+
+Phase C : L'Accessibilité & Raffinement
+
+    [ ] Ajouter les limites (Math.max / Math.min) pour que l'utilisateur ne puisse pas mettre une police de 2px ou 200px.
+
+    [ ] S'assurer que les icônes FontAwesome sont bien utilisées avec le composant <FontAwesomeIcon />.
