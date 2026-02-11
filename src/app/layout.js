@@ -10,6 +10,7 @@ import "./globals.css";
 import localFont from 'next/font/local'
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; 
+import Sidebar from "./components/Sidebar";
 config.autoAddCss = false; // pour eviter le css auto de FA
 
 // Déclaration de tes polices locales
@@ -32,8 +33,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${bbbReadMe.variable} ${openDyslexic.variable} ${eido.variable}`}>
       <body>
-        {/* La sidebar viendra ici plus tard */}
-        {children}
+      
+
+     <main>
+           <Sidebar />
+            {children} </main> {/* contenu de des pages */}
+    
       </body>
     </html>
   );

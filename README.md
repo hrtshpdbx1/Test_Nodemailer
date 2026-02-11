@@ -2,7 +2,7 @@
 ## Getting Started
 
 ```bash
-npm run dev
+npm run devn
 
 Puis [http://localhost:3000](http://localhost:3000) 
 
