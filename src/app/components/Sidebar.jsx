@@ -23,49 +23,51 @@ const colors = [
     {
         id: 2,
         name: "Bleu & jaune",
-        bgColor: "rgb(93.699% 99.691% 79.441%)",
-        textColor: "rgb(26.999% 9.8793% 74.757%)"
+        bgColor: "rgb(26.999% 9.8793% 74.757%)",
+        textColor: "rgb(93.699% 99.691% 79.441%)"
+        
     },
     {
         id: 3,
-        name: "Rose pâle & noir",
-        bgColor: "rgb(96.702% 87.161% 90.199%)",
-        textColor: "rgb(0.81603% 5.1251% 0%)"
-    },
-    {
-        id: 4,
         name: "Rouge & blanc",
         bgColor: "#b91c1c",
         textColor: "#fef2f2"
     },
+   
     {
-        id: 5,
-        name: "Jaune & marron",
-        bgColor: "color(display-p3 0.927 0.989 0.29)",
-        textColor: "color(display-p3 0.302 0.023 0.149)"
-    },
-    {
-        id: 6,
+        id: 4,
         name: "Kaki & blanc",
         bgColor: "rgb(21.176% 32.549% 7.8431%)",
         textColor: "#f7fee7"
     },
     {
-        id: 7,
+        id: 5,
         name: "N&B",
         bgColor: "#2D2D2D",
         textColor: "#FFF0F0"
     },
     {
-        id: 8,
+        id: 6,
         name: "Bleu & jaune (vif)",
         bgColor: "rgb(51.37% 99.562% 59.165%)",
         textColor: "rgb(6.1489% 1.6109% 2.6324%)"
     }
+    //  {
+    //     id: 5,
+    //     name: "Jaune & marron",
+    //     bgColor: "color(display-p3 0.302 0.023 0.149)",
+    //     textColor: "color(display-p3 0.927 0.989 0.29)"
+    //   {
+    //     id: 3,
+    //     name: "Rose pâle & noir",
+    //     bgColor: "rgb(96.702% 87.161% 90.199%)",
+    //     textColor: "rgb(0.81603% 5.1251% 0%)"
+    // },  
+
 ];
 
 function Sidebar(props) {
-    const { settings, onChangeSize, onChangeLineHeight, onUpdateFontFamily, onResetSettings, onChangeColors } = props;
+    const { settings, onChangeSize, onChangeLineHeight, onUpdateFontFamily, onResetSettings, onChangeColors, onReverseColors } = props;
     const { fontFamily, fontSize, lineHeight, bgColor, textColor } = settings
 
 
@@ -101,11 +103,9 @@ function Sidebar(props) {
         onChangeColors(newBgColor, newTextColor)
     }
 
-
-    //todo : fonction handleFontSelect
-    // todo : fonction handleThemeSelect
-    // todo : fonction handleReverseTheme
-
+function handleReverseColors (bgColor, textColor) {
+    onReverseColors(bgColor, textColor)
+}
 
 
     return (
@@ -211,7 +211,10 @@ function Sidebar(props) {
                         <div className="sidebar__toggle-wrapper">
 
                             <div className="switch">
-                                <input type="checkbox" id="invert-toggle" />
+                                <input 
+                                onClick={() => handleReverseColors(bgColor, textColor)}
+                                type="checkbox" 
+                                id="invert-toggle" />
                                 <span className="slider round"></span>
                             </div>
                             <div className="sidebar__label">Inverser</div>

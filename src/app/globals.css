@@ -442,7 +442,7 @@ em {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                gap: var(--space-2);
+                gap: var(--space-4);
                 /* display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px; */
@@ -597,24 +597,6 @@ em {
     mask-position: center;
 }
 
-/* On assigne les fichiers spécifiques à chaque groupe */
-/* Groupe Taille de police */
-/* .sidebar__group:nth-of-type(2) .pill-value {
-    -webkit-mask-image: url('../../public/img/icon/font-size.svg');
-    mask-image: url('../../public/img/icon/font-size.svg');
-} */
-
-/* Groupe Interligne */
-/* .sidebar__group:nth-of-type(3) .pill-value {
-    -webkit-mask-image: url('../../public/img/icon/line-height.svg');
-    mask-image: url('../../public/img/icon/line-height.svg');
-} */
-
-/* Selecteur spécial pour l'icone line height */
-/* #sidebar .sidebar__group:nth-of-type(3) .pill-value {
-    max-height: 20px;
-
-} */
 
 /* =========================================
    4. INTERFACE UI (TRIGGERS)

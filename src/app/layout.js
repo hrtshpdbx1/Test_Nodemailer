@@ -10,7 +10,7 @@ import React, { useState } from 'react'
 // ----------------------------------------------
 import "./globals.css";
 import localFont from 'next/font/local'
-import { config } from '@fortawesome/fontawesome-svg-core';
+import { config, text } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Sidebar from "./components/Sidebar";
 config.autoAddCss = false; // pour eviter le css auto de FA
@@ -79,6 +79,14 @@ export default function RootLayout({ children }) {
     })
   }
 
+  const reverseColors = (bgColor,textColor) => {
+     setCustom ({
+      ...custom,
+      bgColor: textColor,
+    textColor: bgColor,
+    })
+  }
+
   const resetSettings = () => {
   setCustom(DEFAULTS)
     }
@@ -107,6 +115,7 @@ export default function RootLayout({ children }) {
             onResetSettings={resetSettings}
             onUpdateFontFamily={updateFontFamily}
             onChangeColors={changeColors}
+            onReverseColors={reverseColors}
           />
           {children}
         </main>

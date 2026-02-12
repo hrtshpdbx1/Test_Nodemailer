@@ -19,6 +19,7 @@ import {
   faBullhorn,
   faChartLine,
   faPenNib,
+  faArrowUp
 } from '@fortawesome/free-solid-svg-icons';
 // import App from "next/app";
 
@@ -39,7 +40,7 @@ export default function Home() {
               <h1>Bonjour !</h1>
               <p>Je suis Louise, une développeuse javascript fullstack en formation. Je souhaite créer et coder un web
                 accessible
-                à tous..tes.</p>
+                à tous et toutes.</p>
             
             
             </div>
@@ -235,6 +236,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
 
       </main>
 

@@ -9,10 +9,10 @@ Fonction handleFontSelect (Le Dropdown)
 
 Fonction handleThemeSelect (Les pastilles de couleur)
 
-    ☐ Penser au Spread Operator (...). Quand tu changes la couleur, tu ne veux pas perdre la taille de la police !
+    ✔ Penser au Spread Operator (...). Quand tu changes la couleur, tu ne veux pas perdre la taille de la police ! @done(26-02-12 17:06)
     ✔ Recréer tes boutons de thèmes (cercles de couleurs) en utilisant un .map() sur un tableau d'objets thèmes @done(26-02-12 14:44)
     Indice : Tes boutons ont des attributs data-bg et data-text. En React, on préfère passer ces valeurs directement en arguments de la fonction.
-    ☐ Dans ton Layout, crée une fonction qui reçoit deux arguments (bgColor et textColor).
+    ✔ Dans ton Layout, crée une fonction qui reçoit deux arguments (bgColor et textColor). @done(26-02-12 17:06)
     ☐ Utilise setCustom({ ...custom, bgColor: nouveauBg, textColor: nouveauText }).
     ✔ Dans la Sidebar, au clic sur un cercle : onClick={() => handleThemeSelect('couleur1', 'couleur2')}. @done(26-02-12 14:44)
 
@@ -27,11 +27,24 @@ La fonction Reset Settings
     Lien avec ton cours : L'état initial du useState.
     Indice : Tu as déjà un objet par défaut dans ton useState du Layout.
 
-  x  ☐ Crée une constante DEFAULTS à l'extérieur de ton composant Layout.
-   x ☐ Ta fonction de reset doit simplement appeler setCustom(DEFAULTS).
+  ✔  ☐ Crée une constante DEFAULTS à l'extérieur de ton composant Layout. @done(26-02-12 17:09)
+   ✔ ☐ Ta fonction de reset doit simplement appeler setCustom(DEFAULTS). @done(26-02-12 17:09)
 
 Le point technique "Variables CSS"
 
 Comme tu l'as vu, le line-height ne s'appliquait pas partout. Ton indice majeur : Dans ton layout.js, au lieu de mettre le style sur le body, utilise un useEffect (présent dans ton React.docx).
 Pourquoi ? useEffect est parfait pour synchroniser ton état React (custom) avec des éléments extérieurs comme les variables CSS du :root (document.documentElement.style.setProperty).
 
+{/* Back to top btn */}
+
+ <button id="backToTop" className="back-to-top" aria-label="Remonter en haut de page">
+<FontAwesomeIcon icon={faArrowUp} />
+ </button>
+
+☐ Création nouveau composant
+☐ State : Crée un état isVisible (booléen).
+☐ Configurer un useEffect pour ajouter un écouteur d'événement sur la fenêtre (window.addEventListener('scroll', ...)).
+☐ La fonction : si window.scrollY > 300. Si oui, setIsVisible(true).
+☐ Le nettoyage : supprimer l'écouteur dans le return du useEffect (le "clean-up function" du cours).
+☐ Integrer le composant au Layout
+☐ Mettre un aria label ? 
