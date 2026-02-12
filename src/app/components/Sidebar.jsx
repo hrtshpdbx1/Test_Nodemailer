@@ -12,9 +12,60 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 
+//Theme
+const colors = [
+    {
+        id: 1,
+        name: "Pistache & gris",
+        bgColor: "rgb(84.699% 96.254% 83.914%)",
+        textColor: "rgb(13.81% 13.179% 9.5057%)"
+    },
+    {
+        id: 2,
+        name: "Bleu & jaune",
+        bgColor: "rgb(93.699% 99.691% 79.441%)",
+        textColor: "rgb(26.999% 9.8793% 74.757%)"
+    },
+    {
+        id: 3,
+        name: "Rose pâle & noir",
+        bgColor: "rgb(96.702% 87.161% 90.199%)",
+        textColor: "rgb(0.81603% 5.1251% 0%)"
+    },
+    {
+        id: 4,
+        name: "Rouge & blanc",
+        bgColor: "#b91c1c",
+        textColor: "#fef2f2"
+    },
+    {
+        id: 5,
+        name: "Jaune & marron",
+        bgColor: "color(display-p3 0.927 0.989 0.29)",
+        textColor: "color(display-p3 0.302 0.023 0.149)"
+    },
+    {
+        id: 6,
+        name: "Kaki & blanc",
+        bgColor: "rgb(21.176% 32.549% 7.8431%)",
+        textColor: "#f7fee7"
+    },
+    {
+        id: 7,
+        name: "N&B",
+        bgColor: "#2D2D2D",
+        textColor: "#FFF0F0"
+    },
+    {
+        id: 8,
+        name: "Bleu & jaune (vif)",
+        bgColor: "rgb(51.37% 99.562% 59.165%)",
+        textColor: "rgb(6.1489% 1.6109% 2.6324%)"
+    }
+];
 
 function Sidebar(props) {
-    const { settings, onChangeSize, onChangeLineHeight, onResetSettings } = props;
+    const { settings, onChangeSize, onChangeLineHeight, onUpdateFontFamily, onResetSettings, onChangeColors } = props;
     const { fontFamily, fontSize, lineHeight, bgColor, textColor } = settings
 
 
@@ -22,9 +73,10 @@ function Sidebar(props) {
     const [isOpen, setIsOpen] = useState(false); // State visibilité sidebar, fermé par défaut
 
 
+
     /* --- 2. LES FONCTIONS --- */
     function handleSizeClick(newSize) {
-        const currentSize = Number(fontSize); 
+        const currentSize = Number(fontSize);
         const nextSize = Math.max(8, currentSize + newSize);
         onChangeSize(nextSize);// On "appelle" le parent pour lui donner la nouvelle valeur
     }
@@ -36,8 +88,17 @@ function Sidebar(props) {
         onChangeLineHeight(nextHeight.toFixed(1));
     }
 
-    function handleResetSettings (settingsToReset) {
-onResetSettings (settingsToReset)
+    function handleResetSettings() {
+        onResetSettings()
+    }
+
+    function handleFontSelect(selectedFont) {
+        onUpdateFontFamily(selectedFont)
+        // transmission de la valeur choisie au parent
+    }
+
+    function handleColorSelect(newBgColor, newTextColor) {
+        onChangeColors(newBgColor, newTextColor)
     }
 
 
@@ -75,16 +136,22 @@ onResetSettings (settingsToReset)
                 </div>
 
                 <div className="sidebar__content">
-                    {/* --- FONT SELCET DROPDOWN ---  */}
+                    {/* --- FONT SELECT DROPDOWN ---  */}
                     <div className="sidebar__group">
                         <h3 className="sidebar__label">Police</h3>
-                        <select id="font-select" className="sidebar_dropdown">
-                            <option value="bbbreadme" className="opt-bbbreadme">BBB ReadMe</option>
-                            <option value="eido" className="opt-eido">Eido</option>
-                            <option value="accessibledfa" className="opt-accessibledfa">Accessible DFA</option>
-                            <option value="opendyslexic" className="opt-opendyslexic">OpenDyslexic</option>
-                            <option value="arial" className="opt-arial">Arial</option>
-                            <option value="times" className="opt-times">Times</option>
+                        <select
+                            // onChange = {(event) => fonctionMAJ (event.target.value) }
+                            onChange={(event) => handleFontSelect(event.target.value)}
+                            value={settings.fontFamily}
+                            id="font-select"
+                            className="sidebar_dropdown">
+                            <option value="--font-bbb-readme" className="opt-bbbreadme">BBB ReadMe</option>
+                            <option value="--font-eido"
+                                className="opt-eido">Eido</option>
+                            <option value="--font-accessibledfa" className="opt-accessibledfa">Accessible DFA</option>
+                            <option value="--font-open-dyslexic" className="opt-opendyslexic">OpenDyslexic</option>
+                            <option value="Arial, sans-serif" className="opt-arial">Arial</option>
+                            <option value="Times New Roman, serif" className="opt-times">Times</option>
                         </select>
                     </div>
 
@@ -125,35 +192,18 @@ onResetSettings (settingsToReset)
                     <div className="sidebar__group">
                         <p>Thèmes :</p>
                         <div className="contrast-group">
-                            <button className="contrast-circle contrast-control"
-                                data-bg="rgb(84.699% 96.254% 83.914%)"
-                                data-text="rgb(13.81% 13.179% 9.5057%)">
-                            </button>
-                            <button className="contrast-circle contrast-control"
-                                data-bg="rgb(93.699% 99.691% 79.441%)"
-                                data-text="rgb(26.999% 9.8793% 74.757%)">
-                            </button>
-                            <button className="contrast-circle contrast-control"
-                                data-bg="rgb(96.702% 87.161% 90.199%)"
-                                data-text="rgb(0.81603% 5.1251% 0%)">
-                            </button>
-                            <button className="contrast-circle contrast-control" data-bg="#b91c1c"
-                                data-text="#fef2f2">
-                            </button>
-                            <button className="contrast-circle contrast-control" data-bg="color(display-p3 0.927 0.989 0.29)"
-                                data-text="color(display-p3 0.302 0.023 0.149)">
-                            </button>
-                            <button className="contrast-circle contrast-control"
-                                data-bg="rgb(21.176% 32.549% 7.8431%)"
-                                data-text="#f7fee7">
-                            </button>
-                            <button className="contrast-circle contrast-control" data-bg="#2D2D2D"
-                                data-text="#FFF0F0">
-                            </button>
-                            <button className="contrast-circle contrast-control"
-                                data-bg="rgb(51.37% 99.562% 59.165%)"
-                                data-text="rgb(6.1489% 1.6109% 2.6324%)">
-                            </button>
+
+                            {colors.map(color => (
+                                <button
+                                    key={color.id}
+                                    className="contrast-circle"
+                                    style={{
+                                        "--btn-bg": color.bgColor,
+                                        "--btn-text": color.textColor,
+                                    }}
+                                    onClick={() => handleColorSelect(color.bgColor, color.textColor)}
+                                    title={color.name}/>
+                            ))}
                         </div>
                     </div>
                     {/* --- REVERSE---  */}
@@ -169,11 +219,11 @@ onResetSettings (settingsToReset)
                     </div>
                     {/* --- RESET---  */}
                     <div className="sidebar__group">
-                        <button 
-                        onClick={handleResetSettings}
-                        id="reset-theme" 
-                        className="sidebar__reset-button" 
-                        title="Réinitialiser le thème">
+                        <button
+                            onClick={handleResetSettings}
+                            id="reset-theme"
+                            className="sidebar__reset-button"
+                            title="Réinitialiser le thème">
                             <i className="fa-solid fa-rotate-left"></i>
                             <span>Réinitialiser</span>
 

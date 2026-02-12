@@ -30,12 +30,8 @@ a {
    2. VARIABLES & RESET
    ========================================= */
 :root {
-    /* ! Ne pas modifier ces couleurs qui sont pilotées par le JS*/
-    --main-background: #F7F7F0;
-    /* ! idem */
-    --main-text: #2C3E50;
-    /* --accent-color-soft: #B7B7E0;
-    --accent-color-strong: #001F3F; */
+    --main-background: var(--main-background);
+    --main-text:  var(--main-text);
 
     /* SPACING */
     --space-0-5: 0.15rem;
@@ -61,21 +57,13 @@ a {
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.20);
 
     /* FONTS */
-
-    --font-size-extra-small: 0.8rem;
-    /* ~13px */
-    --font-size-small: 0.9rem;
-    /* ~14px */
-    --font-size-normal: 1rem;
-    /* ~16px (standard web) */
-    --font-size-medium: 1.125rem;
-    /* ~18px */
-    --font-size-large: 1.5rem;
-    /* ~24px */
-    --font-size-title: 2.5rem;
-    /* ~32px */
-    --font-size-hero: 3.5rem;
-    /* ~56px */
+    --font-size-extra-small: 0.8rem;  /* ~13px */
+    --font-size-small: 0.9rem;  /* ~14px */
+    --font-size-normal: 1rem;   /* ~16px (standard web) */
+    --font-size-medium: 1.125rem;  /* ~18px */
+    --font-size-large: 1.5rem; /* ~24px */
+    --font-size-title: 2.5rem; /* ~32px */
+    --font-size-hero: 3.5rem; /* ~56px */
     --weight-extra-light: 200;
     --weight-light: 300;
     --weight-regular: 400;
@@ -106,7 +94,6 @@ html {
     /* "y" pour défilement vertical, "mandatory" pour forcer l'aimantation */
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
-    /* Pour que les ancres soient fluides */
 }
 
 html,
@@ -200,7 +187,8 @@ body {
 }
 
 #main-content p {
-    font-size: inherit;    /* lien Sidebar */
+    font-size: inherit;
+    /* lien Sidebar */
     line-height: var(--dynamic-line-height, 1.2);
     max-width: 80ch;
     margin-bottom: var(--space-6);
@@ -326,6 +314,7 @@ em {
         align-items: center;
         justify-content: center;
 
+
     }
 
     #closeCustomBlock {
@@ -436,9 +425,14 @@ em {
                 }
 
                 .pill-value {
-                    color: var(--main-text);
                     padding: 0 10px;
                     max-width: 45px;
+                    color: var(--main-text);
+                    background-color: var(--main-text);
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-size: contain;
+                    mask-size: contain;
                 }
 
             }
@@ -448,7 +442,7 @@ em {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
-                gap: var(--space-3);
+                gap: var(--space-2);
                 /* display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px; */
@@ -457,7 +451,7 @@ em {
                     width: 35px;
                     height: 35px;
                     border-radius: 50%;
-                    border: 3px solid var(--main-background);
+                    border: 2px solid var(--main-background);
                     box-shadow: var(--shadow-md);
                     cursor: pointer;
                     /* Diagonale dynamique via variables JS */
@@ -555,8 +549,6 @@ em {
         width: 100%;
         /* Prend toute la largeur du groupe */
         padding: 10px 15px;
-
-        /* Couleurs cohérentes avec tes .pill-btn */
         background: var(--main-background);
         color: var(--main-text);
         border: 1px solid var(--main-text);
@@ -596,12 +588,7 @@ em {
     /* 1. On définit la taille */
     width: 24px;
     height: 24px;
-
-    /* 2. La couleur magique : elle utilisera ta variable de thème */
     background-color: var(--main-text);
-
-    /* 3. On applique le masque (on retire l'attribut src du HTML plus tard) */
-    /* Note: On utilise mask-image et sa version préfixée pour la compatibilité */
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: contain;
@@ -612,22 +599,22 @@ em {
 
 /* On assigne les fichiers spécifiques à chaque groupe */
 /* Groupe Taille de police */
-.sidebar__group:nth-of-type(2) .pill-value {
+/* .sidebar__group:nth-of-type(2) .pill-value {
     -webkit-mask-image: url('../../public/img/icon/font-size.svg');
     mask-image: url('../../public/img/icon/font-size.svg');
-}
+} */
 
 /* Groupe Interligne */
-.sidebar__group:nth-of-type(3) .pill-value {
+/* .sidebar__group:nth-of-type(3) .pill-value {
     -webkit-mask-image: url('../../public/img/icon/line-height.svg');
     mask-image: url('../../public/img/icon/line-height.svg');
-}
+} */
 
 /* Selecteur spécial pour l'icone line height */
-#sidebar .sidebar__group:nth-of-type(3) .pill-value {
+/* #sidebar .sidebar__group:nth-of-type(3) .pill-value {
     max-height: 20px;
 
-}
+} */
 
 /* =========================================
    4. INTERFACE UI (TRIGGERS)
@@ -856,7 +843,7 @@ em {
                         }
 
 
-                        i{
+                        i {
                             margin-right: 18px;
                             margin-top: 4px;
                             min-width: 20px;
@@ -970,17 +957,17 @@ em {
 
     .skills-list.mastery li svg {
         margin-right: 18px;
-            margin-top: 4px;
-            min-width: 20px;
+        margin-top: 4px;
+        min-width: 20px;
 
         transition: all 0.3s ease;
         color: var(--main-text);
 
     }
 
-    .skills-list.mastery li svg:hover  {
-            transition: all 0.3s ease;
-        transform: scale(1.2) 
+    .skills-list.mastery li svg:hover {
+        transition: all 0.3s ease;
+        transform: scale(1.2)
     }
 
     /* Couleurs spécifiques par icône au survol */

@@ -27,18 +27,20 @@ config.autoAddCss = false; // pour eviter le css auto de FA
 
 // Déclaration de tes polices locales
 const bbbReadMe = localFont({
-  src: '../../public/fonts/BBBReadMe-Regular.woff2', // Chemin vers ton fichier
-  variable: '--font-bbb-readme', // Nom de la variable CSS à utiliser
+  src: '../../public/fonts/BBBReadMe-Regular.woff2', 
+  variable: '--font-bbb-readme', 
 })
-
 const openDyslexic = localFont({
   src: '../../public/fonts/OpenDyslexic-Regular.otf',
   variable: '--font-open-dyslexic',
 })
-
 const eido = localFont({
   src: '../../public/fonts/eido.otf',
   variable: '--font-eido',
+})
+const accessibleDFA = localFont({
+  src: '../../public/fonts/accessibledfa.woff',
+  variable: '--font-accessibledfa',
 })
 
 export default function RootLayout({ children }) {
@@ -50,7 +52,7 @@ export default function RootLayout({ children }) {
   const updateFontSize = (newSize) => {
     setCustom({
       ...custom, // copie l'objet actuel
-      fontSize: newSize  // remplace la taille
+      fontSize: newSize  // remplace avec nvlle valeur
     });
   };
 
@@ -61,20 +63,40 @@ export default function RootLayout({ children }) {
     })
   }
 
+  const updateFontFamily = (selectedFont) => {
+    //recoit une chaine de caractère
+  setCustom ({
+    ... custom,
+    fontFamily : selectedFont
+  })
+  }
 
-  const resetSettings = (settingsToReset) => {
+  const changeColors = (newBgColor, newTextColor) => {
+    setCustom ({
+      ...custom,
+      bgColor: newBgColor,
+    textColor: newTextColor,
+    })
+  }
+
+  const resetSettings = () => {
   setCustom(DEFAULTS)
     }
   
 
 
   return (
-    <html lang="fr" className={`${bbbReadMe.variable} ${openDyslexic.variable} ${eido.variable}`}>
+    <html lang="fr" className={`${bbbReadMe.variable} ${openDyslexic.variable} ${eido.variable} ${accessibleDFA.variable} `}>
       
       {/* appliquation du style sur les variable du CSS (au lieu du body)*/}
       <body style={{ 
+        "--main-background" : custom.bgColor,
+        "--main-text" : custom.textColor,
         "--dynamic-line-height": custom.lineHeight,
-        fontSize: `${custom.fontSize}px`
+        fontSize: `${custom.fontSize}px`,
+        fontFamily :custom.fontFamily.startsWith('--') 
+    ? `var(${custom.fontFamily})` 
+    : custom.fontFamily
         }}>
         <main >
           {/* Communication enfant */}
@@ -83,6 +105,8 @@ export default function RootLayout({ children }) {
             onChangeSize={updateFontSize}
             onChangeLineHeight={updateLineHeight}
             onResetSettings={resetSettings}
+            onUpdateFontFamily={updateFontFamily}
+            onChangeColors={changeColors}
           />
           {children}
         </main>
