@@ -15,6 +15,16 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import Sidebar from "./components/Sidebar";
 config.autoAddCss = false; // pour eviter le css auto de FA
 
+  // Valeurs par défauts
+  const DEFAULTS = ({
+    fontFamily: "--font-bbb-readme",
+    fontSize: 13,
+    lineHeight: 1.5,
+    bgColor: 'rgb(84.699% 96.254% 83.914%)',
+    textColor: 'rgb(13.81% 13.179% 9.5057%)',
+  }) 
+
+
 // Déclaration de tes polices locales
 const bbbReadMe = localFont({
   src: '../../public/fonts/BBBReadMe-Regular.woff2', // Chemin vers ton fichier
@@ -31,46 +41,54 @@ const eido = localFont({
   variable: '--font-eido',
 })
 
-
-
-
 export default function RootLayout({ children }) {
 
-  /* ---  LES ÉTATS (STATES) --- */
-// déplacé depuis le composant
-const [custom, setCustom] = useState(
-  {
-  fontFamily: "--font-bbb-readme",
-  fontSize: '12',
-  lineHeight: '1.8',
-  bgColor: 'rgb(84.699% 96.254% 83.914%)',
-  textColor: 'rgb(13.81% 13.179% 9.5057%)',
-}
-); // State fontsize (test)
+  /* ---  STATES --- */
+  const [custom, setCustom] = useState(DEFAULTS);
 
-  // todo: Envoyer l'objet custom via un props 
-  // settings={custom})
+  /* ---  FONCTIONS --- */
+  const updateFontSize = (newSize) => {
+    setCustom({
+      ...custom, // copie l'objet actuel
+      fontSize: newSize  // remplace la taille
+    });
+  };
 
+  const updateLineHeight = (newHeight) => {
+    setCustom({
+      ...custom,
+      lineHeight : newHeight
+    })
+  }
+
+
+  const resetSettings = (settingsToReset) => {
+  setCustom(DEFAULTS)
+    }
   
-    /* ---  FONCTIONS --- */
-    // todo : créer une fonction (handleChangeSettings) qui recevra les nouvelles valeurs depuis la Sidebar et mettra à jour le state custom avec setCustom.
 
 
   return (
     <html lang="fr" className={`${bbbReadMe.variable} ${openDyslexic.variable} ${eido.variable}`}>
-      <body>
-
-
-        <main>
-          <Sidebar 
-          value={Sidebar} />
-          {children} </main> {/* contenu de des pages */}
+      
+      {/* appliquation du style sur les variable du CSS (au lieu du body)*/}
+      <body style={{ 
+        "--dynamic-line-height": custom.lineHeight,
+        fontSize: `${custom.fontSize}px`
+        }}>
+        <main >
+          {/* Communication enfant */}
+          <Sidebar
+            settings={custom}
+            onChangeSize={updateFontSize}
+            onChangeLineHeight={updateLineHeight}
+            onResetSettings={resetSettings}
+          />
+          {children}
+        </main>
 
       </body>
     </html>
   );
 }
 
-// APPLICATION DU STYLE
-// peut être injecter dans la balise body 
-// style={{ fontSize: custom.fontSize + 'px', ... }}.

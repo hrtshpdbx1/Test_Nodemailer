@@ -1,24 +1,38 @@
-Ta TODO Liste de codeur (Ordre de priorité)
+TO DO 
 
-Phase A : La Structure (layout.js)
+Fonction handleFontSelect (Le Dropdown)
 
-    [x ] Déplacer le useState de la Sidebar vers le layout.js.
+    ☐ Recréer tes boutons de thèmes (cercles de couleurs) en utilisant un .map() sur un tableau d'objets thèmes 
+    ☐ événement onChange sur ta balise <select>.
+    ☐ Dans le Layout, prépare une fonction qui reçoit une chaîne de caractères (le nom de la police).
+    ☐ Dans la Sidebar, crée handleFontSelect(event).
+    ☐ Rappel JS : Pour récupérer la valeur choisie dans un select, on utilise event.target.value.
 
-    [ x] Créer l'objet DEFAULTS avec fontSize, lineHeight, bgColor, textColor.
+Fonction handleThemeSelect (Les pastilles de couleur)
 
-    [ ] Passer l'objet et la fonction de mise à jour à <Sidebar /> via les props.
+    ☐ Penser au Spread Operator (...). Quand tu changes la couleur, tu ne veux pas perdre la taille de la police !
+    ☐ Recréer tes boutons de thèmes (cercles de couleurs) en utilisant un .map() sur un tableau d'objets thèmes 
+    Indice : Tes boutons ont des attributs data-bg et data-text. En React, on préfère passer ces valeurs directement en arguments de la fonction.
+    ☐ Dans ton Layout, crée une fonction qui reçoit deux arguments (bgColor et textColor).
+    ☐ Utilise setCustom({ ...custom, bgColor: nouveauBg, textColor: nouveauText }).
+    ☐ Dans la Sidebar, au clic sur un cercle : onClick={() => handleThemeSelect('couleur1', 'couleur2')}.
 
-    Indice : Dans la démo, Aude fait : child.adopted = true. Dans mon cas, comme tu as un objet avec plusieurs propriétés (fontSize, lineHeight, etc.), quand tu modifies la taille, il ne faut pas "écraser" le reste (comme la couleur).
-    todo  : Révise l'utilisation du Spread Operator (...). Pour modifier juste la taille dans un objet, on fait souvent quelque chose comme : setCustom({ ...custom, fontSize: nouvelleValeur }).
+La fonction handleReverseTheme (Le Switch)
+Lien avec ton cours : C'est une inversion de valeurs.
+Indice : C'est comme le bouton "Afficher/Cacher" dans tes notes sur le rendu conditionnel.
 
-Phase B : La Sidebar (Sidebar.jsx)
+    ☐ Récupère les couleurs actuelles depuis settings.
+    ☐ Imagine une fonction qui échange la place de bgColor et textColor.
 
-    [ ] Remplacer les appels locaux à setFontSize par la fonction reçue du parent (updateSettings).
+La fonction Reset Settings
+    Lien avec ton cours : L'état initial du useState.
+    Indice : Tu as déjà un objet par défaut dans ton useState du Layout.
 
-    [ ] Recréer tes boutons de thèmes (cercles de couleurs) en utilisant un .map() sur un tableau d'objets thèmes (comme te l'a suggéré Caroline !).
+    ☐ Crée une constante DEFAULTS à l'extérieur de ton composant Layout.
+    ☐ Ta fonction de reset doit simplement appeler setCustom(DEFAULTS).
 
-Phase C : L'Accessibilité & Raffinement
+Le point technique "Variables CSS"
 
-    [ ] Ajouter les limites (Math.max / Math.min) pour que l'utilisateur ne puisse pas mettre une police de 2px ou 200px.
+Comme tu l'as vu, le line-height ne s'appliquait pas partout. Ton indice majeur : Dans ton layout.js, au lieu de mettre le style sur le body, utilise un useEffect (présent dans ton React.docx).
+Pourquoi ? useEffect est parfait pour synchroniser ton état React (custom) avec des éléments extérieurs comme les variables CSS du :root (document.documentElement.style.setProperty).
 
-    [ ] S'assurer que les icônes FontAwesome sont bien utilisées avec le composant <FontAwesomeIcon />.
