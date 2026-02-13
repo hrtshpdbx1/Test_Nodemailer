@@ -1,0 +1,171 @@
+/* app/styles/project-detail.css */
+
+/* On utilise cette classe parente pour isoler le style */
+.projectPageWrapper {
+    background-color: var(--main-background);
+    color: var(--main-text);
+    min-height: 100vh;
+}
+
+
+.projectPageWrapper main {
+    padding-top: 20px;
+}
+
+
+/* 1. Navigation de retour */
+.projectNav {
+    margin: var(--space-4);
+    display: flex;
+    align-items: center;
+}
+
+/* 2. Conteneur principal */
+.projectPage {
+    max-width: 800px; /* Plus lisible pour du contenu texte dense */
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.projectPage p, 
+.projectPage li {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: none;
+}
+
+/* 3. Hero & Meta données */
+.projectHero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.projectTagline {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.projectMeta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
+    border-top: 1px solid rgb(from var(--main-text) r g b / 10%);
+    border-bottom: 1px solid rgb(from var(--main-text) r g b / 10%);
+}
+
+.metaContainerLeft {
+    display: flex;
+    gap: var(--space-8);
+}
+
+.metaItem strong {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-2);
+}
+
+.metaItem ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.metaItem li {
+    font-size: 0.9rem !important;
+    opacity: 0.8;
+}
+
+/* 4. Sections de contenu */
+.projectSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.projectSection h2 {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-4);
+    border-bottom: 2px solid var(--main-text);
+    display: inline-block;
+    width: fit-content;
+}
+
+.highlight {
+    background: rgb(from var(--main-text) r g b / 3%);
+    padding: var(--space-6);
+    border-left: 5px solid var(--main-text);
+    border-radius: var(--radius-sm);
+}
+
+/* 5. Images et Vidéos */
+.imagePlaceholder {
+    margin: var(--space-8) 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagePlaceholder img, 
+.imagePlaceholder video {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgb(from var(--main-text) r g b / 10%);
+}
+
+.imagePlaceholder figcaption {
+    margin-top: var(--space-3);
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.6;
+}
+
+/* 6. Blocs de Code & Concept */
+.htmlConcept, .codeConcept, .jsonConcept {
+    background-color: #282a36;
+    color: #f8f8f2;
+    padding: var(--space-6);
+    border-radius: var(--radius-md);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin: var(--space-4) 0;
+}
+
+.codeComment { color: #6272a4; }
+.keyword { color: #ff79c6; }
+.attr { color: #50fa7b; }
+.string { color: #f1fa8c; }
+
+/* 7. Footer de page projet */
+.projectFooter {
+    text-align: center;
+    padding: var(--space-12) var(--space-4);
+    background: rgb(from var(--main-text) r g b / 2%);
+    margin-top: var(--space-12);
+}
+
+/* 8. Listes avec flèches */
+.projectList {
+    list-style: none;
+    padding-left: 0;
+}
+
+.projectList li {
+    position: relative;
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-2);
+}

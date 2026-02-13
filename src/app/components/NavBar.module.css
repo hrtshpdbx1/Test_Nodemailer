@@ -1,0 +1,102 @@
+/* Le conteneur du bouton (en haut à droite) */
+.navbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2100; /* Priorité maximale */
+}
+
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--main-text);
+}
+
+/* Le menu de navigation (style Sidebar) */
+.navMenu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Caché par défaut à droite */
+    width: 250px;
+    height: 100vh;
+    background: var(--main-background);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    padding: 80px 30px; /* Padding haut pour laisser la place au bouton */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    z-index: 2050;
+    list-style: none;
+}
+
+.navMenuVisible {
+    right: 0; /* On l'affiche */
+}
+
+.navMenu a {
+    text-decoration: none;
+    color: var(--main-text);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.dropdownMenu {
+    padding-left: 15px;
+    margin-top: 10px;
+    border-left: 1px solid var(--main-text);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+/* Titre de catégorie discret */
+.categoryTitle {
+    opacity: 0.5;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* Header interne au menu */
+.menuHeader {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Bouton croix identique à la sidebar */
+.closeButton {
+    font-size: 2rem;
+    background: none;
+    color: var(--main-text);
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.closeButton:hover {
+    transform: scale(1.1);
+}
+
+
+/* Le bouton Hamburger circulaire */
+.hamburger {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--main-background);
+    border: none;
+    color: var(--main-text);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease;
+}

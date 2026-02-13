@@ -30,10 +30,7 @@ La fonction Reset Settings
   ✔  ☐ Crée une constante DEFAULTS à l'extérieur de ton composant Layout. @done(26-02-12 17:09)
    ✔ ☐ Ta fonction de reset doit simplement appeler setCustom(DEFAULTS). @done(26-02-12 17:09)
 
-Le point technique "Variables CSS"
 
-Comme tu l'as vu, le line-height ne s'appliquait pas partout. Ton indice majeur : Dans ton layout.js, au lieu de mettre le style sur le body, utilise un useEffect (présent dans ton React.docx).
-Pourquoi ? useEffect est parfait pour synchroniser ton état React (custom) avec des éléments extérieurs comme les variables CSS du :root (document.documentElement.style.setProperty).
 
 {/* Back to top btn */}
 
@@ -51,3 +48,10 @@ Pourquoi ? useEffect est parfait pour synchroniser ton état React (custom) avec
 
 ☐ Ajouter les pages projets
 ☐ Faire une page "A propos de ce site" 
+
+Dans ton project-detail.css, tu avais :
+CSS
+body { background-color: var(--main-background); }
+
+Problème : En React, changer le style du body dans un fichier CSS importé par une page peut affecter tout ton site.
+Entoure tout le contenu de ta page projet dans une div className="project-page-wrapper"> et remplace body par .project-page-wrapper dans ton CSS. Cela "isole" tes styles.

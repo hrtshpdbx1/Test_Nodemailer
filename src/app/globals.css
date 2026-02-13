@@ -31,7 +31,7 @@ a {
    ========================================= */
 :root {
     --main-background: var(--main-background);
-    --main-text:  var(--main-text);
+    --main-text: var(--main-text);
 
     /* SPACING */
     --space-0-5: 0.15rem;
@@ -57,13 +57,20 @@ a {
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.20);
 
     /* FONTS */
-    --font-size-extra-small: 0.8rem;  /* ~13px */
-    --font-size-small: 0.9rem;  /* ~14px */
-    --font-size-normal: 1rem;   /* ~16px (standard web) */
-    --font-size-medium: 1.125rem;  /* ~18px */
-    --font-size-large: 1.5rem; /* ~24px */
-    --font-size-title: 2.5rem; /* ~32px */
-    --font-size-hero: 3.5rem; /* ~56px */
+    --font-size-extra-small: 0.8rem;
+    /* ~13px */
+    --font-size-small: 0.9rem;
+    /* ~14px */
+    --font-size-normal: 1rem;
+    /* ~16px (standard web) */
+    --font-size-medium: 1.125rem;
+    /* ~18px */
+    --font-size-large: 1.5rem;
+    /* ~24px */
+    --font-size-title: 2.5rem;
+    /* ~32px */
+    --font-size-hero: 3.5rem;
+    /* ~56px */
     --weight-extra-light: 200;
     --weight-light: 300;
     --weight-regular: 400;
@@ -141,46 +148,6 @@ body {
     }
 }
 
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--main-text);
-    color: var(--main-background);
-    border: 1.5px solid var(--main-text);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 998;
-    /* Juste en dessous du menu trigger */
-
-    /* On le cache par défaut */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-
-    /* Animation fluide */
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-md);
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        background-color: var(--main-background);
-        color: var(--main-text);
-    }
-
-    /* Version active/visible */
-    &.visible {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-}
 
 #main-content {
     /* ne pas mettre de line-height ici ! */
@@ -607,9 +574,10 @@ em {
     position: fixed;
     top: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
-    background: var(--main-background);
+    width: 50px;
+    height: 50px;
+    background-color: var(--main-background);
+    color: var(--main-text);
     border: none;
     border-radius: 50%;
     display: flex;
@@ -617,11 +585,52 @@ em {
     justify-content: center;
     cursor: pointer;
     z-index: 999;
-    color: var(--main-text);
     font-size: 2em;
 
     &:hover {
         rotate: z 90deg;
+    }
+}
+
+
+.back-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--main-text);
+    color: var(--main-background);
+
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 998;
+
+
+    /* On le cache par défaut */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+
+    /* Animation fluide */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+
+    &:hover {
+        transform: translateY(-5px);
+        background-color: var(--main-background);
+        color: var(--main-text);
+        border: 1px solid var(--main-text);
+    }
+
+    /* Version active/visible */
+    &.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 }
 
