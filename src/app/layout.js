@@ -13,6 +13,7 @@ import localFont from 'next/font/local'
 import { config, text } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import Sidebar from "./components/Sidebar";
+import BackToTop from './components/BackToTop';
 config.autoAddCss = false; // pour eviter le css auto de FA
 
   // Valeurs par défauts
@@ -117,6 +118,7 @@ export default function RootLayout({ children }) {
             onChangeColors={changeColors}
             onReverseColors={reverseColors}
           />
+          <BackToTop />
           {children}
         </main>
 

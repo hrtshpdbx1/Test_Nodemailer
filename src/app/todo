@@ -41,10 +41,13 @@ Pourquoi ? useEffect est parfait pour synchroniser ton état React (custom) avec
 <FontAwesomeIcon icon={faArrowUp} />
  </button>
 
-☐ Création nouveau composant
-☐ State : Crée un état isVisible (booléen).
-☐ Configurer un useEffect pour ajouter un écouteur d'événement sur la fenêtre (window.addEventListener('scroll', ...)).
-☐ La fonction : si window.scrollY > 300. Si oui, setIsVisible(true).
-☐ Le nettoyage : supprimer l'écouteur dans le return du useEffect (le "clean-up function" du cours).
-☐ Integrer le composant au Layout
-☐ Mettre un aria label ? 
+✔  Création nouveau composant @done(26-02-13 11:36)
+✔ State : Crée un état isVisible (booléen). @done(26-02-13 11:36)
+✔ Configurer un useEffect pour ajouter un écouteur d'événement sur la fenêtre (window.addEventListener('scroll', ...)). @done(26-02-13 11:36)
+✔ La fonction : si window.scrollY > 300. Si oui, setIsVisible(true). @done(26-02-13 11:36)
+✔ Le nettoyage : supprimer l'écouteur dans le return du useEffect (le "clean-up function" du cours). @done(26-02-13 11:36)
+✔ Integrer le composant au Layout @done(26-02-13 11:36)
+✔ Mettre un aria label ? @done(26-02-13 11:36)
+
+☐ Ajouter les pages projets
+☐ Faire une page "A propos de ce site" 
